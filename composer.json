@@ -1,0 +1,10 @@
+{
+    "name": "developergeorg/php-project-lvl1",
+    "authors": [
+        {
+            "name": "developergeorg",
+            "email": "bg@moderntoken.com"
+        }
+    ],
+    "require": {}
+}
