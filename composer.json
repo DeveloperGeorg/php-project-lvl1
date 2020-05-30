@@ -6,6 +6,11 @@
       "email": "bg@moderntoken.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "BrainGames\\": "src/"
+    }
+  },
   "bin": [
     "bin/brain-games"
   ],
