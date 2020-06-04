@@ -11,7 +11,7 @@ use Exception;
  *
  * @package BrainGames
  */
-class EvenGame implements GamePlayableInterface
+class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
 {
     private const ANSWER_YES = 'yes';
     private const ANSWER_NO = 'no';
@@ -35,7 +35,6 @@ class EvenGame implements GamePlayableInterface
      */
     public function play(Player $player)
     {
-        $this->cliStream->line('Answer "yes" if the number is even, otherwise answer "no"');
         $tasksAndAnswers = $this->getTaskAndAnswers(static::MAX_RIGHT_ANSWERS_COUNTER);
         $finisGame = false;
         $rightAnswersCounter = 0;
@@ -60,6 +59,14 @@ class EvenGame implements GamePlayableInterface
         } else {
             $this->cliStream->line("Let's try again, {$player->getName()}!");
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription(): string
+    {
+        return 'Answer "yes" if the number is even, otherwise answer "no"';
     }
 
     /**

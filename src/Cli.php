@@ -33,6 +33,9 @@ class Cli implements GameRunner
     {
         $player = new Player();
         $this->cliStream->line('Welcome to the Brain Games!');
+        if ($gamePlayable instanceof DescriptionHavingInterface) {
+            $this->cliStream->line($gamePlayable->getDescription());
+        }
         $player->setName($this->cliStream->prompt('May I have your name?'));
         $this->cliStream->line("Hello, %s!", $player->getName());
 
