@@ -27,13 +27,17 @@ class Cli implements GameRunner
     }
 
     /**
-     * @return void
+     * {@inheritDoc}
      */
-    public function run(): void
+    public function run(GamePlayableInterface $gamePlayable = null): void
     {
         $player = new Player();
         $this->cliStream->line('Welcome to the Brain Games!');
         $player->setName($this->cliStream->prompt('May I have your name?'));
         $this->cliStream->line("Hello, %s!", $player->getName());
+
+        if ($gamePlayable !== null) {
+            $gamePlayable->play($player);
+        }
     }
 }
