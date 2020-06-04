@@ -6,6 +6,7 @@
       "email": "bg@moderntoken.com"
     }
   ],
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "BrainGames\\": "src/"
