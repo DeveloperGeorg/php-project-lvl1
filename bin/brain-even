@@ -4,8 +4,15 @@
 use BrainGames\Cli;
 use BrainGames\EvenGame;
 
-if (file_exists(dirname(__FILE__) . '/../vendor/autoload.php')) {
-    require_once dirname(__FILE__) . '/../vendor/autoload.php';
+$composerAutoload = [
+    __DIR__ . '/../vendor/autoload.php', // standalone with "composer install" run
+    __DIR__ . '/../../../autoload.php',  // script is installed as a composer binary
+];
+foreach ($composerAutoload as $autoload) {
+    if (file_exists($autoload)) {
+        require($autoload);
+        break;
+    }
 }
 
 (new Cli())->run(new EvenGame());
