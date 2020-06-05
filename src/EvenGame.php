@@ -13,9 +13,11 @@ use Exception;
  */
 class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
 {
+    use GameFlowTrait;
+
     private const ANSWER_YES = 'yes';
     private const ANSWER_NO = 'no';
-    private const MAX_RIGHT_ANSWERS_COUNTER = 3;
+
     /**
      * @var Streams
      */
@@ -35,30 +37,8 @@ class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
      */
     public function play(Player $player)
     {
-        $tasksAndAnswers = $this->getTaskAndAnswers(static::MAX_RIGHT_ANSWERS_COUNTER);
-        $finisGame = false;
-        $rightAnswersCounter = 0;
-        foreach ($tasksAndAnswers as $taskAndAnswer) {
-            if ($finisGame === true) {
-                break;
-            }
-            $this->cliStream->line("Question: {$taskAndAnswer['number']}");
-            $answer = $this->cliStream->prompt('Your answer');
-            if ($taskAndAnswer['answer'] === $answer) {
-                $this->cliStream->line('Correct!');
-                $rightAnswersCounter++;
-            } else {
-                $this->cliStream->line(
-                    "'{$answer}' is wrong answer ;(. Correct answer was '{$taskAndAnswer['answer']}'."
-                );
-                $finisGame = true;
-            }
-        }
-        if ($rightAnswersCounter === static::MAX_RIGHT_ANSWERS_COUNTER) {
-            $this->cliStream->line("Congratulations, {$player->getName()}!");
-        } else {
-            $this->cliStream->line("Let's try again, {$player->getName()}!");
-        }
+        $tasksAndAnswers = $this->getTasks($this->getMaxRightAnswersCount());
+        $this->flow($tasksAndAnswers, $player);
     }
 
     /**
@@ -74,7 +54,7 @@ class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
      *
      * @return array
      */
-    private function getTaskAndAnswers(int $count = 3)
+    private function getTasks(int $count = 3)
     {
         $return = [];
         $taskCounter = 0;
@@ -85,7 +65,7 @@ class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
                 $number = rand(1, 999);
             }
             $return[] = [
-                'number' => $number,
+                'question' => $number,
                 'answer' => $number % 2 === 0 ? static::ANSWER_YES : static::ANSWER_NO
             ];
             $taskCounter++;
