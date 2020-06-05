@@ -3,7 +3,6 @@
 namespace BrainGames;
 
 use BrainGames\Model\Task;
-use cli\Streams;
 use Exception;
 
 /**
@@ -11,24 +10,10 @@ use Exception;
  *
  * @package BrainGames
  */
-class EvenGame implements GameInterface
+class EvenGame extends GameAbstract
 {
     private const ANSWER_YES = 'yes';
     private const ANSWER_NO = 'no';
-
-    /**
-     * @var Streams
-     */
-    private $cliStream;
-
-    /**
-     * Cli constructor.
-     *
-     */
-    public function __construct()
-    {
-        $this->cliStream = new Streams();
-    }
 
     /**
      * {@inheritDoc}

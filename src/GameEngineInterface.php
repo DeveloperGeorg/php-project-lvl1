@@ -12,12 +12,12 @@ use BrainGames\Model\Player;
 interface GameEngineInterface
 {
     /**
-     * @param GameInterface $game
+     * @param GameAbstract $game
      * @param Player $player
      *
      * @param int $maxTasksCount
      *
      * @return mixed
      */
-    public function play(GameInterface $game, Player $player, int $maxTasksCount = 3);
+    public function play(GameAbstract $game, Player $player, int $maxTasksCount = 3);
 }

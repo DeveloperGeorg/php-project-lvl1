@@ -29,7 +29,7 @@ class CliGameEngine implements GameEngineInterface
     /**
      * {@inheritDoc}
      */
-    public function play(GameInterface $game, Player $player, int $maxTasksCount = 3)
+    public function play(GameAbstract $game, Player $player, int $maxTasksCount = 3)
     {
         $tasksAndAnswers = $game->getTasks($maxTasksCount);
         $finisGame = false;

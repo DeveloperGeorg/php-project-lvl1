@@ -5,17 +5,12 @@ namespace BrainGames;
 use BrainGames\Model\Task;
 
 /**
- * Interface GameInterface
+ * Interface TaskGetterInterface
  *
  * @package BrainGames
  */
-interface GameInterface
+interface TaskGetterInterface
 {
-    /**
-     * @return string
-     */
-    public function getDescription(): string;
-
     /**
      * @param int $count
      *

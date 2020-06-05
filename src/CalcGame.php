@@ -3,7 +3,6 @@
 namespace BrainGames;
 
 use BrainGames\Model\Task;
-use cli\Streams;
 use Exception;
 
 /**
@@ -11,22 +10,8 @@ use Exception;
  *
  * @package BrainGames
  */
-class CalcGame implements GameInterface
+class CalcGame extends GameAbstract
 {
-    /**
-     * @var Streams
-     */
-    private $cliStream;
-
-    /**
-     * Cli constructor.
-     *
-     */
-    public function __construct()
-    {
-        $this->cliStream = new Streams();
-    }
-
     /**
      * {@inheritDoc}
      */

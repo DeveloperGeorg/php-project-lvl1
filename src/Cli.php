@@ -34,7 +34,7 @@ class Cli implements GameRunner
     /**
      * {@inheritDoc}
      */
-    public function run(GameInterface $game = null): void
+    public function run(GameAbstract $game = null): void
     {
         $player = new Player();
         $this->cliStream->line('Welcome to the Brain Games!');
