@@ -7,4 +7,8 @@ Hexlet. Brain games.
 [![Installation video](https://i.paste.pics/afbc397f92c066636fecf5cd4a71edc0.png?trs=9525980e4087a3ec14e8632d0e4ba14812bb664b488e3d231347042fab02a0e7)](https://asciinema.org/a/ivN4IXmONm99R07MZbdXMjuGh)
 
 ### Play process
+#### Even game
 [![Play process video](https://i.paste.pics/afbc397f92c066636fecf5cd4a71edc0.png?trs=9525980e4087a3ec14e8632d0e4ba14812bb664b488e3d231347042fab02a0e7)](https://asciinema.org/a/dzUmONg3V083D5kFwXfs68M8B)
+
+#### Calc game
+[![Play process video](https://i.paste.pics/afbc397f92c066636fecf5cd4a71edc0.png?trs=9525980e4087a3ec14e8632d0e4ba14812bb664b488e3d231347042fab02a0e7)](https://asciinema.org/a/PR7t2qUVyGFPU4e5CNUvmHJ0L)
