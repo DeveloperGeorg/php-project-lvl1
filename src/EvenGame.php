@@ -2,7 +2,7 @@
 
 namespace BrainGames;
 
-use BrainGames\Model\Player;
+use BrainGames\Model\Task;
 use cli\Streams;
 use Exception;
 
@@ -11,10 +11,8 @@ use Exception;
  *
  * @package BrainGames
  */
-class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
+class EvenGame implements GameInterface
 {
-    use GameFlowTrait;
-
     private const ANSWER_YES = 'yes';
     private const ANSWER_NO = 'no';
 
@@ -35,26 +33,15 @@ class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
     /**
      * {@inheritDoc}
      */
-    public function play(Player $player)
-    {
-        $tasksAndAnswers = $this->getTasks($this->getMaxRightAnswersCount());
-        $this->flow($tasksAndAnswers, $player);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getDescription(): string
     {
         return 'Answer "yes" if the number is even, otherwise answer "no"';
     }
 
     /**
-     * @param int $count
-     *
-     * @return array
+     * {@inheritDoc}
      */
-    private function getTasks(int $count = 3)
+    public function getTasks(int $count): array
     {
         $return = [];
         $taskCounter = 0;
@@ -64,10 +51,10 @@ class EvenGame implements GamePlayableInterface, DescriptionHavingInterface
             } catch (Exception $e) {
                 $number = rand(1, 999);
             }
-            $return[] = [
-                'question' => $number,
-                'answer' => $number % 2 === 0 ? static::ANSWER_YES : static::ANSWER_NO
-            ];
+            $return[] = new Task(
+                $number,
+                $number % 2 === 0 ? static::ANSWER_YES : static::ANSWER_NO
+            );
             $taskCounter++;
         }
 

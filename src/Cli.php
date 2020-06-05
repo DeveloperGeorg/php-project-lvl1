@@ -16,6 +16,10 @@ class Cli implements GameRunner
      * @var Streams
      */
     private $cliStream;
+    /**
+     * @var CliGameEngine
+     */
+    private $gameEngine;
 
     /**
      * Cli constructor.
@@ -24,23 +28,26 @@ class Cli implements GameRunner
     public function __construct()
     {
         $this->cliStream = new Streams();
+        $this->gameEngine = new CliGameEngine();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function run(GamePlayableInterface $gamePlayable = null): void
+    public function run(GameInterface $game = null): void
     {
         $player = new Player();
         $this->cliStream->line('Welcome to the Brain Games!');
-        if ($gamePlayable instanceof DescriptionHavingInterface) {
-            $this->cliStream->line($gamePlayable->getDescription());
+
+        if ($game !== null && strlen($game->getDescription()) > 0) {
+            $this->cliStream->line($game->getDescription());
         }
+
         $player->setName($this->cliStream->prompt('May I have your name?'));
         $this->cliStream->line("Hello, %s!", $player->getName());
 
-        if ($gamePlayable !== null) {
-            $gamePlayable->play($player);
+        if ($game !== null) {
+            $this->gameEngine->play($game, $player);
         }
     }
 }

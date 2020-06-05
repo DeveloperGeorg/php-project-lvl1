@@ -2,7 +2,7 @@
 
 namespace BrainGames;
 
-use BrainGames\Model\Player;
+use BrainGames\Model\Task;
 use cli\Streams;
 use Exception;
 
@@ -11,10 +11,8 @@ use Exception;
  *
  * @package BrainGames
  */
-class CalcGame implements GamePlayableInterface, DescriptionHavingInterface
+class CalcGame implements GameInterface
 {
-    use GameFlowTrait;
-
     /**
      * @var Streams
      */
@@ -40,18 +38,7 @@ class CalcGame implements GamePlayableInterface, DescriptionHavingInterface
     /**
      * {@inheritDoc}
      */
-    public function play(Player $player)
-    {
-        $tasksAndAnswers = $this->getTasks($this->getMaxRightAnswersCount());
-        $this->flow($tasksAndAnswers, $player);
-    }
-
-    /**
-     * @param int $count
-     *
-     * @return array
-     */
-    private function getTasks(int $count = 3)
+    public function getTasks(int $count): array
     {
         $tasks = [];
         $taskCounter = 0;
@@ -84,10 +71,10 @@ class CalcGame implements GamePlayableInterface, DescriptionHavingInterface
             if ($operator === null || $answer == null) {
                 continue;
             }
-            $tasks[] = [
-                'question' => "{$number1} {$operator} {$number2}",
-                'answer' => $answer
-            ];
+            $tasks[] = new Task(
+                "{$number1} {$operator} {$number2}",
+                $answer
+            );
             $taskCounter++;
         }
 

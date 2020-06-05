@@ -10,9 +10,9 @@ namespace BrainGames;
 interface GameRunner
 {
     /**
-     * @param GamePlayableInterface|null $gamePlayable
+     * @param GameInterface|null $game
      *
      * @return void
      */
-    public function run(GamePlayableInterface $gamePlayable = null): void;
+    public function run(GameInterface $game = null): void;
 }
