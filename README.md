@@ -16,3 +16,5 @@ Hexlet. Brain games.
 #### Gcd game
 [![Play process video](https://i.paste.pics/afbc397f92c066636fecf5cd4a71edc0.png?trs=9525980e4087a3ec14e8632d0e4ba14812bb664b488e3d231347042fab02a0e7)](https://asciinema.org/a/ZIAIk1BnBZf16NH2bebYVhhRR)
 
+#### Progression game
+[![Play process video](https://i.paste.pics/afbc397f92c066636fecf5cd4a71edc0.png?trs=9525980e4087a3ec14e8632d0e4ba14812bb664b488e3d231347042fab02a0e7)](https://asciinema.org/a/55JVfz0GsZoRVDhZTRcZxlYdD)
