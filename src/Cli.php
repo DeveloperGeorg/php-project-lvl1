@@ -2,6 +2,7 @@
 
 namespace BrainGames;
 
+use BrainGames\Games\GameAbstract;
 use BrainGames\Model\Player;
 use cli\Streams;
 

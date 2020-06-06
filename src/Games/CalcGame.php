@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames;
+namespace BrainGames\Games;
 
 use BrainGames\Model\Task;
 use Exception;

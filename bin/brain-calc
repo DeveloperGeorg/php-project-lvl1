@@ -2,7 +2,7 @@
 <?php
 require(__DIR__ . '/../autoload.php');
 
-use BrainGames\CalcGame;
 use BrainGames\Cli;
+use BrainGames\Games\CalcGame;
 
 (new Cli())->run(new CalcGame());

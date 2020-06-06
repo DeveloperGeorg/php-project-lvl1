@@ -3,6 +3,6 @@
 require(__DIR__ . '/../autoload.php');
 
 use BrainGames\Cli;
-use BrainGames\EvenGame;
+use BrainGames\Games\EvenGame;
 
 (new Cli())->run(new EvenGame());

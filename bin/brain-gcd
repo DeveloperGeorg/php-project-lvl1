@@ -3,6 +3,6 @@
 require(__DIR__ . '/../autoload.php');
 
 use BrainGames\Cli;
-use BrainGames\GcdGame;
+use BrainGames\Games\GcdGame;
 
 (new Cli())->run(new GcdGame());

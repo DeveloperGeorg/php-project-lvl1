@@ -2,6 +2,8 @@
 
 namespace BrainGames;
 
+use BrainGames\Games\GameAbstract;
+
 /**
  * Interface GameRunner
  *

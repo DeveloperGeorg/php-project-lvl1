@@ -1,8 +1,10 @@
 <?php
 
-namespace BrainGames;
+namespace BrainGames\Games;
 
+use BrainGames\DescriptionHavingInterface;
 use BrainGames\Model\Task;
+use BrainGames\TaskGetterInterface;
 
 /**
  * Interface GameInterface
