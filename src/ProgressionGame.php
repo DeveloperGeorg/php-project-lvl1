@@ -89,5 +89,4 @@ class ProgressionGame extends GameAbstract
         $this->progressionLength = $progressionLength;
         return $this;
     }
-
 }
