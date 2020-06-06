@@ -2,6 +2,8 @@
 
 namespace BrainGames;
 
+use BrainGames\Model\Task;
+
 /**
  * Interface GameInterface
  *
@@ -18,4 +20,23 @@ abstract class GameAbstract implements DescriptionHavingInterface, TaskGetterInt
      * {@inheritDoc}
      */
     abstract public function getTasks(int $count): array;
+
+    /**
+     * @param int $count
+     * @param $function Callback function
+     *
+     * @return array
+     */
+    protected function collectTasks(int $count, $function)
+    {
+        $tasks = [];
+        while (count($tasks) < $count) {
+            $task = $function();
+            if ($task instanceof Task) {
+                $tasks[] = $task;
+            }
+        }
+
+        return $tasks;
+    }
 }

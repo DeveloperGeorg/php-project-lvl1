@@ -25,9 +25,7 @@ class CalcGame extends GameAbstract
      */
     public function getTasks(int $count): array
     {
-        $tasks = [];
-        $taskCounter = 0;
-        while ($taskCounter < $count) {
+        return $this->collectTasks($count, function () {
             $operator = null;
             $answer = null;
             try {
@@ -54,15 +52,12 @@ class CalcGame extends GameAbstract
                     break;
             }
             if ($operator === null || $answer == null) {
-                continue;
+                return null;
             }
-            $tasks[] = new Task(
+            return new Task(
                 "{$number1} {$operator} {$number2}",
                 $answer
             );
-            $taskCounter++;
-        }
-
-        return $tasks;
+        });
     }
 }

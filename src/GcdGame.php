@@ -28,9 +28,7 @@ class GcdGame extends GameAbstract
      */
     public function getTasks(int $count): array
     {
-        $return = [];
-        $taskCounter = 0;
-        while ($taskCounter < $count) {
+        return $this->collectTasks($count, function () {
             try {
                 $number1 = random_int(1, 999);
                 $number2 = random_int(1, 999);
@@ -38,13 +36,10 @@ class GcdGame extends GameAbstract
                 $number1 = rand(1, 999);
                 $number2 = rand(1, 999);
             }
-            $return[] = new Task(
+            return new Task(
                 "{$number1} {$number2}",
                 gmp_gcd($number1, $number2)
             );
-            $taskCounter++;
-        }
-
-        return $return;
+        });
     }
 }

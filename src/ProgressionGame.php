@@ -29,9 +29,7 @@ class ProgressionGame extends GameAbstract
      */
     public function getTasks(int $count): array
     {
-        $tasks = [];
-        $taskCounter = 0;
-        while ($taskCounter < $count) {
+        return $this->collectTasks($count, function () {
             $startNumber = rand(1, 999);
             $progressionDifference = rand(1, 100);
             $progression = $this->generateProgression(
@@ -42,14 +40,11 @@ class ProgressionGame extends GameAbstract
             $hiddenPosition = rand(1, count($progression)) - 1;
             $answer = $progression[$hiddenPosition];
             $progression[$hiddenPosition] = '..';
-            $tasks[] = new Task(
+            return new Task(
                 implode(' ', $progression),
                 $answer
             );
-            $taskCounter++;
-        }
-
-        return $tasks;
+        });
     }
 
     /**
