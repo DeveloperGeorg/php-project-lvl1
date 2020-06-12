@@ -1,8 +1,15 @@
 #!/usr/bin/env php
 <?php
+
+use function BrainGames\Cli\run;
+use function BrainGames\Games\Gcd\getDescription;
+use function BrainGames\Games\Gcd\getTasks;
+
 require(__DIR__ . '/../autoload.php');
 
-use BrainGames\Cli;
-use BrainGames\Games\GcdGame;
-
-(new Cli())->run(new GcdGame());
+run(
+    (function () {
+        return getTasks(3);
+    }),
+    getDescription()
+);

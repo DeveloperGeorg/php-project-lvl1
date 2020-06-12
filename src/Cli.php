@@ -1,54 +1,34 @@
 <?php
 
-namespace BrainGames;
+namespace BrainGames\Cli;
 
-use BrainGames\Games\GameAbstract;
-use BrainGames\Model\Player;
-use cli\Streams;
+use function BrainGames\Games\CliEngine\play;
+use function cli\line;
+use function cli\prompt;
 
 /**
- * Class Cli
- *
- * @package BrainGames
+ * @param string $playGameFunction
+ * @param string|null $description
  */
-class Cli implements GameRunner
+function run($playGameFunction = null, ?string $description = null): void
 {
-    /**
-     * @var Streams
-     */
-    private $cliStream;
-    /**
-     * @var CliGameEngine
-     */
-    private $gameEngine;
+    line('Welcome to the Brain Games!');
 
-    /**
-     * Cli constructor.
-     *
-     */
-    public function __construct()
-    {
-        $this->cliStream = new Streams();
-        $this->gameEngine = new CliGameEngine();
+    if ($description !== null && strlen($description) > 0) {
+        line($description);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function run(GameAbstract $game = null): void
-    {
-        $player = new Player();
-        $this->cliStream->line('Welcome to the Brain Games!');
+    $playerName = prompt('May I have your name?');
+    line("Hello, %s!", $playerName);
 
-        if ($game !== null && strlen($game->getDescription()) > 0) {
-            $this->cliStream->line($game->getDescription());
-        }
-
-        $player->setName($this->cliStream->prompt('May I have your name?'));
-        $this->cliStream->line("Hello, %s!", $player->getName());
-
-        if ($game !== null) {
-            $this->gameEngine->play($game, $player);
+    if ($playGameFunction !== null) {
+        $wasGameWined = play(
+            $playGameFunction
+        );
+        if ($wasGameWined) {
+            line("Congratulations, {$playerName}!");
+        } else {
+            line("Let's try again, {$playerName}!");
         }
     }
 }

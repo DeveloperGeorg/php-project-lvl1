@@ -2,7 +2,15 @@
 <?php
 require(__DIR__ . '/../autoload.php');
 
-use BrainGames\Cli;
-use BrainGames\Games\ProgressionGame;
+use function BrainGames\Cli\run;
+use function BrainGames\Games\Progression\getDescription;
+use function BrainGames\Games\Progression\getTasks;
 
-(new Cli())->run(new ProgressionGame());
+require(__DIR__ . '/../autoload.php');
+
+run(
+    (function () {
+        return getTasks(3, 10);
+    }),
+    getDescription()
+);

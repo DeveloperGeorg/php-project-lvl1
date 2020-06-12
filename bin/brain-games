@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
+
+use function BrainGames\Cli\run;
+
 require(__DIR__ . '/../autoload.php');
 
-use BrainGames\Cli;
-
-(new Cli())->run();
+run();

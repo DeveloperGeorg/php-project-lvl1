@@ -10,7 +10,17 @@
   "autoload": {
     "psr-4": {
       "BrainGames\\": "src/"
-    }
+    },
+    "files": [
+      "src/Cli.php",
+      "src/Games/helpers.php",
+      "src/Games/CliEngine.php",
+      "src/Games/Calc.php",
+      "src/Games/Even.php",
+      "src/Games/Gcd.php",
+      "src/Games/Prime.php",
+      "src/Games/Progression.php"
+    ]
   },
   "bin": [
     "bin/brain-games",

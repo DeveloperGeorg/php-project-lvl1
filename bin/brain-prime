@@ -1,8 +1,15 @@
 #!/usr/bin/env php
 <?php
+
+use function BrainGames\Cli\run;
+use function BrainGames\Games\Prime\getDescription;
+use function BrainGames\Games\Prime\getTasks;
+
 require(__DIR__ . '/../autoload.php');
 
-use BrainGames\Cli;
-use BrainGames\Games\PrimeGame;
-
-(new Cli())->run(new PrimeGame());
+run(
+    (function () {
+        return getTasks(3);
+    }),
+    getDescription()
+);
